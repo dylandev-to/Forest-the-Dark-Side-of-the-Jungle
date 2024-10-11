@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     private GameObject startMenu;
     [SerializeField]
     private GameObject deadScreen;
+    [SerializeField]
+    private GameObject winScreen;
 
     void Awake()
     {
@@ -61,6 +63,11 @@ public class UIManager : MonoBehaviour
     public void ShowDeadScreen(bool show)
     {
         deadScreen.SetActive(show);
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void ShowWinScreen(bool show)
+    {
+        winScreen.SetActive(show);
         Cursor.lockState = CursorLockMode.None;
     }
 }
