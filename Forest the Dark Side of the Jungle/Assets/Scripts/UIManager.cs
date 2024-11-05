@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,6 +18,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject settingsScreen;
 
+    [Header("Texts")]
+    [SerializeField]
+    private Text scoreText;
+    private int score;
+    [SerializeField]
+    private Text goldText;
+    private int gold;
+
     void Awake()
     {
         if (Instance != null)
@@ -28,6 +38,8 @@ public class UIManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        Coin.Collected += UpdateScore;
     }
 
     // Update is called once per frame
@@ -76,5 +88,14 @@ public class UIManager : MonoBehaviour
     public void OpenSettings(bool open)
     {
         settingsScreen.SetActive(open);
+    }
+
+    public void UpdateScore()
+    {
+        score += 3;
+        scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
+
+        gold++;
+        goldText.text = $"Score: {gold.ToString().PadLeft(4, '0')}";
     }
 }
