@@ -8,7 +8,9 @@ public class Enemy : MonoBehaviour
     enum AIStates
     {
         Idle,
-        Wandering
+        Wandering,
+        Chasing,
+        Attacking
     }
 
     [SerializeField]
@@ -20,20 +22,45 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    [SerializeField]
+    private Transform player;
 
-    private AIStates curStates = AIStates.Idle;
+    [SerializeField]
+    private float chaseDistance = 10.0f;
+
+    [SerializeField]
+    private float attackDistance = 2.0f;
+
+    [SerializeField]
+    private float attackCooldown = 1.0f;
+
+    private AIStates curState = AIStates.Idle;
     private float waitTimer = 0.0f;
-
+    private float attackTimer = 0.0f;
 
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        switch (curStates)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= attackDistance)
+        {
+            curState = AIStates.Attacking;
+        }
+        else if (distanceToPlayer <= chaseDistance)
+        {
+            curState = AIStates.Chasing;
+        }
+        else if (curState != AIStates.Wandering)
+        {
+            curState = AIStates.Idle;
+        }
+
+        switch (curState)
         {
             case AIStates.Idle:
                 DoIdle();
@@ -41,19 +68,18 @@ public class Enemy : MonoBehaviour
             case AIStates.Wandering:
                 DoWander();
                 break;
+            case AIStates.Chasing:
+                DoChase();
+                break;
+            case AIStates.Attacking:
+                DoAttack();
+                break;
             default:
                 Debug.LogError("Error.");
                 break;
         }
 
-        if (agent.velocity.magnitude > 0.1f)
-        {
-            animator.SetBool("isMoving", true);
-        }
-        else
-        {
-            animator.SetBool("isMoving", false);
-        }
+        animator.SetBool("isMoving", agent.velocity.magnitude > 0.1f);
     }
 
     private void DoIdle()
@@ -64,32 +90,48 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-
         agent.SetDestination(RandomNavSphere(transform.position, 10.0f, floorMask));
-        curStates = AIStates.Wandering;
+        curState = AIStates.Wandering;
     }
 
     private void DoWander()
     {
-        if (agent.pathStatus != NavMeshPathStatus.PathComplete)
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            return;
+            waitTimer = Random.Range(1.0f, 4.0f);
+            curState = AIStates.Idle;
+        }
+    }
+
+    private void DoChase()
+    {
+        agent.SetDestination(player.position);
+    }
+
+    private void DoAttack()
+    {
+        if (attackTimer <= 0f)
+        {
+            agent.SetDestination(transform.position);
+            animator.SetTrigger("Attack");
+            attackTimer = attackCooldown;
+        }
+        else
+        {
+            attackTimer -= Time.deltaTime;
         }
 
-
-        waitTimer = Random.Range(1.0f, 4.0f);
-        curStates = AIStates.Idle;
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer > attackDistance)
+        {
+            curState = AIStates.Chasing;
+        }
     }
 
     Vector3 RandomNavSphere(Vector3 origin, float distance, LayerMask layerMask)
     {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
-
-        randomDirection += origin;
-
-        NavMeshHit navHit;
-
-        NavMesh.SamplePosition(randomDirection, out navHit, distance, layerMask);
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance + origin;
+        NavMesh.SamplePosition(randomDirection, out NavMeshHit navHit, distance, layerMask);
         return navHit.position;
     }
 }
