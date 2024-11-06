@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     private AIStates curState = AIStates.Idle;
     private float waitTimer = 0.0f;
     private float attackTimer = 0.0f;
+    private bool hasDealtDamage = false;
 
     void Start()
     {
@@ -110,21 +111,41 @@ public class Enemy : MonoBehaviour
 
     private void DoAttack()
     {
+        agent.isStopped = true;
+
         if (attackTimer <= 0f)
         {
-            agent.SetDestination(transform.position);
             animator.SetTrigger("Attack");
             attackTimer = attackCooldown;
+            hasDealtDamage = false;
         }
         else
         {
             attackTimer -= Time.deltaTime;
         }
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if (distanceToPlayer > attackDistance)
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("Enemy_Attack") && stateInfo.normalizedTime >= 0.5f && stateInfo.normalizedTime < 0.6f && !hasDealtDamage)
+        {
+            DealDamage();
+            hasDealtDamage = true;
+        }
+
+        if (!stateInfo.IsName("Enemy_Attack") && hasDealtDamage)
         {
             curState = AIStates.Chasing;
+            agent.isStopped = false;
+        }
+    }
+
+
+
+    private void DealDamage()
+    {
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
+        {
+            playerHealth.TakeDamage(10);
         }
     }
 
