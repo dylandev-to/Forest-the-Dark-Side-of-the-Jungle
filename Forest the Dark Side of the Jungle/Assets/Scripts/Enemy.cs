@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -39,9 +41,20 @@ public class Enemy : MonoBehaviour
     private float attackTimer = 0.0f;
     private bool hasDealtDamage = false;
 
+
+    [Header("Health Damage")]
+    [SerializeField]
+    private int maxHealth;
+    private int _curHealth;
+    [SerializeField]
+    private AudioSource damageAudioFx;
+    
+
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        _curHealth = maxHealth;
     }
 
     void Update()
@@ -154,5 +167,23 @@ public class Enemy : MonoBehaviour
         Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance + origin;
         NavMesh.SamplePosition(randomDirection, out NavMeshHit navHit, distance, layerMask);
         return navHit.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet")) Damage();
+    }
+
+    private void Damage(int dmg = 1)
+    {
+        if (_curHealth <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        damageAudioFx.Stop();
+        _curHealth -= dmg;
+        damageAudioFx.Play();
     }
 }
