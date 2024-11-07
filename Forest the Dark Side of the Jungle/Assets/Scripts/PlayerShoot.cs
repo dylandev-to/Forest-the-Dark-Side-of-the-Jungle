@@ -19,6 +19,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField]
     private float impulseForce;
 
+    public static bool IsStunned { get; private set; }
+
     void Start()
     {
         curDelay = delay;
@@ -26,6 +28,8 @@ public class PlayerShoot : MonoBehaviour
 
     void Update()
     {
+        IsStunned = curDelay < delay;
+
         curDelay += Time.deltaTime;
         if (curDelay >= delay && Input.GetMouseButtonDown(0))
         {

@@ -9194,6 +9194,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3960078569360622440, guid: b5d198b4d4e8261419a5afee0db7f51f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960078569360622440, guid: b5d198b4d4e8261419a5afee0db7f51f, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4722485721708401339, guid: b5d198b4d4e8261419a5afee0db7f51f, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -10912,6 +10920,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1963345380342884955, guid: fa20ddb0703119f42807c85659b88795, type: 3}
+      propertyPath: attackCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6725509907933105055, guid: fa20ddb0703119f42807c85659b88795, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.05

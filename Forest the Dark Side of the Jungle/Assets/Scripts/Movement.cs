@@ -62,6 +62,7 @@ public class Movement : MonoBehaviour
 
         float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : movementSpeed;
 
+        if (PlayerShoot.IsStunned) currentSpeed /= 10;
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * currentSpeed * Time.deltaTime);
