@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4282751298464534}
   - component: {fileID: 33064861370375056}
   - component: {fileID: 23428578988514696}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Oak3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
