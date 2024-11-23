@@ -6,9 +6,16 @@ public class PlayerHandler : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Dead"))
+        switch (other.gameObject.tag)
         {
-            UIManager.Instance.ShowDeadScreen(true);
+            case "Dead":
+                UIManager.Instance.ShowDeadScreen(true);
+                break;
+            case "Win":
+                UIManager.Instance.ShowWinScreen(true);
+                break;
+            default:
+                break;
         }
     }
 }

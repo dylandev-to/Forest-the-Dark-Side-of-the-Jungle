@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Dead
   - Bullet
+  - Win
   layers:
   - Default
   - TransparentFX
