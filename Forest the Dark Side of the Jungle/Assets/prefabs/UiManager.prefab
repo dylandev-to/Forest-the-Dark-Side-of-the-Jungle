@@ -7943,7 +7943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenu: {fileID: 3732811001477008035}
-  deadScreen: {fileID: 2841396798684064156}
+  deadScreen: {fileID: 2323336726448766433}
   winScreen: {fileID: 2841396798684064156}
   settingsScreen: {fileID: 2691864037350807341}
   scoreText: {fileID: 7825377189363840801}
