@@ -790,6 +790,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5d198b4d4e8261419a5afee0db7f51f, type: 3}
+--- !u!195 &1792599657 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 6172326430539124587, guid: b5d198b4d4e8261419a5afee0db7f51f, type: 3}
+  m_PrefabInstance: {fileID: 1792599656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2075988623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,6 +1122,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1369152008122440669, guid: 3a8c7a58e81f0394380bb77221b59ad4, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1792599657}
+    - target: {fileID: 1369152008122440669, guid: 3a8c7a58e81f0394380bb77221b59ad4, type: 3}
+      propertyPath: floorMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2590509095522215228, guid: 3a8c7a58e81f0394380bb77221b59ad4, type: 3}
       propertyPath: m_Name
       value: Creep1

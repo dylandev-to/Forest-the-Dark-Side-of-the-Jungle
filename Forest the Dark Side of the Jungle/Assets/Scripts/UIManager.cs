@@ -85,6 +85,7 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
+
     public void OpenSettings(bool open)
     {
         settingsScreen.SetActive(open);
