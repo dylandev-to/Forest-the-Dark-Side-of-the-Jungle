@@ -1023,8 +1023,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135616164}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2807989, y: 0.55852133, z: 0.20851932, w: 0.7521474}
-  m_LocalPosition: {x: 18.4572, y: -17.39489, z: -3.3028646}
+  m_LocalRotation: {x: 0.11835313, y: 0.30766568, z: 0.038589664, w: -0.9433161}
+  m_LocalPosition: {x: 36.30872, y: -1.9041723, z: -0.6900096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1039,6 +1039,63 @@ Skybox:
   m_GameObject: {fileID: 2135616164}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 0}
+--- !u!1001 &380239990725774549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8751294056453327313, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_Name
+      value: Skorpion VZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.151
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.247
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8751294056453428721, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 927711d164de70d4e97eb7d249acc280, type: 3}
 --- !u!1001 &1749929703081563025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1274,3 +1331,4 @@ SceneRoots:
   - {fileID: 2134319903}
   - {fileID: 3538793278387557440}
   - {fileID: 331702918}
+  - {fileID: 380239990725774549}
