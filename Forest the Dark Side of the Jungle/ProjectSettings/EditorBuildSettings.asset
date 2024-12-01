@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Background.unity
     guid: 69d282a2cccb95346b02c14132dc8137
   - enabled: 1
-    path: Assets/Scenes/ForestLevel.unity
+    path: Assets/Scenes/Forestlevel.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/level2/ForestLevel2miniTerrian.unity
+    guid: b8857f12d9682c04ca35f0dfb630609c
+  - enabled: 1
+    path: Assets/Scenes/ForestLevel3.unity
+    guid: 97351688e88f03845906149148cfea5d
   m_configObjects: {}
