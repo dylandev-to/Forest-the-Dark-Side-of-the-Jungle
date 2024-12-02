@@ -13,17 +13,12 @@ public class PlayerHandler : MonoBehaviour
                 break;
             case "Win":
                 UIManager.Instance.ShowWinScreen(true);
-                StopWin();
                 break;
             default:
                 break;
         }
     }
 
-    private IEnumerator StopWin()
-    {
-        yield return new WaitForSeconds(5);
-        UIManager.Instance.ShowWinScreen(false);
-    }
+    
 
 }

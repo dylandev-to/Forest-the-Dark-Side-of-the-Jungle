@@ -83,6 +83,15 @@ public class UIManager : MonoBehaviour
     {
         winScreen.SetActive(show);
         Cursor.lockState = CursorLockMode.None;
+        StartCoroutine(StopWinScreenCoroutine());
+
+    }
+
+    IEnumerator StopWinScreenCoroutine()
+    {
+       
+        yield return new WaitForSeconds(5);
+        winScreen.SetActive(false);
     }
 
 
