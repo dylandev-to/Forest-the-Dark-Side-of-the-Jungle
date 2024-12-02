@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     private int currentHealth;
+    [SerializeField]
+    private GameObject player;
 
     public Text healthText;
 
@@ -35,5 +37,10 @@ public class PlayerHealth : MonoBehaviour
         {
             healthText.text = "Health: " + currentHealth;
         }
+    }
+
+    public void HideSkill()
+    {
+        player.SetActive(false);
     }
 }
