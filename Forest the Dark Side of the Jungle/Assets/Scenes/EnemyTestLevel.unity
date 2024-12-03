@@ -206,10 +206,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2323336726448766433, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5558852826416589695, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -290,10 +286,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5996254773441509444, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: deadScreen
-      value: 
-      objectReference: {fileID: 281672439}
     - target: {fileID: 6493500925482469504, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
       propertyPath: m_Name
       value: UiManager
@@ -303,11 +295,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
---- !u!1 &281672439 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2323336726448766433, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-  m_PrefabInstance: {fileID: 220227517}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &597247799 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1643283678453428363, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}

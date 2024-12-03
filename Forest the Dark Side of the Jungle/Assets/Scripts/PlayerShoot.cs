@@ -18,6 +18,11 @@ public class PlayerShoot : MonoBehaviour
     private AudioSource audioFx;
     [SerializeField]
     private float impulseForce;
+    [Header("Flashlight")]
+    [SerializeField]
+    private GameObject flashlightObject;
+    [SerializeField]
+    private bool isFlashlightOn;
 
     public static bool IsStunned { get; private set; }
 
@@ -44,6 +49,12 @@ public class PlayerShoot : MonoBehaviour
             StartCoroutine(DestroyBullet(bulletSpawned));
 
             curDelay = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isFlashlightOn = !isFlashlightOn;
+            flashlightObject.SetActive(isFlashlightOn);
         }
     }
 
