@@ -103,5 +103,17 @@ public class UIManager : MonoBehaviour
 
         gold++;
         goldText.text = $"Score: {gold.ToString().PadLeft(4, '0')}";
+    public void OpenSettings(bool open)
+    {
+        settingsScreen.SetActive(open);
+    }
+
+    public void UpdateScore()
+    {
+        score += 3;
+        scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
+
+        gold++;
+        goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
     }
 }
