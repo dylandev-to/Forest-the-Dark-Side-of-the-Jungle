@@ -66,6 +66,7 @@ public class UIManager : MonoBehaviour
         try
         {
             SceneManager.LoadScene(levelName);
+        winScreen.SetActive(false);
         }
         catch
         {
@@ -79,21 +80,16 @@ public class UIManager : MonoBehaviour
         deadScreen.SetActive(show);
         Cursor.lockState = CursorLockMode.None;
     }
+
     public void ShowWinScreen(bool show)
     {
         winScreen.SetActive(show);
         Cursor.lockState = CursorLockMode.None;
-        StartCoroutine(StopWinScreenCoroutine());
-
+        if (!show)
+        {
+            winScreen.SetActive(false);
+        }
     }
-
-    IEnumerator StopWinScreenCoroutine()
-    {
-       
-        yield return new WaitForSeconds(5);
-        winScreen.SetActive(false);
-    }
-
 
     public void OpenSettings(bool open)
     {
@@ -106,6 +102,7 @@ public class UIManager : MonoBehaviour
         scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
 
         gold++;
-        goldText.text = $"Score: {gold.ToString().PadLeft(4, '0')}";
+        goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
     }
+    
 }
