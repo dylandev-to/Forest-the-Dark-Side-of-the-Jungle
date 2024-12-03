@@ -70,7 +70,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2860535252294488084, guid: 5bee5287b064ef64fb732dddb584c168, type: 3}
+  m_Motion: {fileID: 7400018, guid: 1c345d5c2a9b820439fe3bd81aa11b09, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -123,7 +123,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 921396131823731129, guid: 5bee5287b064ef64fb732dddb584c168, type: 3}
+  m_Motion: {fileID: 7400026, guid: 1c345d5c2a9b820439fe3bd81aa11b09, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -169,7 +169,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_Walk
+  m_Name: Boss_Walk 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isMoving
@@ -177,13 +177,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -292,7 +292,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7229255052698961349, guid: 5bee5287b064ef64fb732dddb584c168, type: 3}
+  m_Motion: {fileID: 7400004, guid: 1c345d5c2a9b820439fe3bd81aa11b09, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

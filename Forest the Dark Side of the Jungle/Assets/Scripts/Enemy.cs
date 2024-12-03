@@ -144,12 +144,13 @@ public class Enemy : MonoBehaviour
             hasDealtDamage = true;
         }
 
-        if (!stateInfo.IsName("Enemy_Attack") && hasDealtDamage)
+        if (!stateInfo.IsName("Enemy_Attack"))
         {
             curState = AIStates.Chasing;
-            agent.isStopped = false;
         }
+        agent.isStopped = false;
     }
+
 
 
 
