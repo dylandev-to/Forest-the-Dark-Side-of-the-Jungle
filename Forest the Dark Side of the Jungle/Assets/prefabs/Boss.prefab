@@ -2401,7 +2401,7 @@ MonoBehaviour:
   chaseDistance: 20
   attackDistance: 4
   attackCooldown: 1.5
-  maxHealth: 15
+  maxHealth: 12
   damageAudioFx: {fileID: 351592754432809213}
 --- !u!54 &4352432672121893536
 Rigidbody:
