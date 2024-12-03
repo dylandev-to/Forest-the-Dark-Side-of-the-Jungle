@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+    [SerializeField] private GameObject player;
 
     void Start()
     {
@@ -38,6 +39,8 @@ public class Movement : MonoBehaviour
 
 
         ApplyGravity();
+
+        CheckHightShowDeath();
 
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -66,6 +69,15 @@ public class Movement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * currentSpeed * Time.deltaTime);
+    }
+
+    void CheckHightShowDeath()
+    {
+        float PlayerHight = player.transform.position.y;
+        if(PlayerHight < -6.5)
+        {
+            UIManager.Instance.ShowDeadScreen(true);
+        }
     }
 
     void LookAround()
