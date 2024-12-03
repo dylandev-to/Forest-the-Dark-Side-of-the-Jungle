@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        StopDeadScreen();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -79,6 +79,15 @@ public class UIManager : MonoBehaviour
     {
         deadScreen.SetActive(show);
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    void StopDeadScreen()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "Background")
+        {
+            deadScreen.SetActive(false);
+        }
     }
 
     public void ShowWinScreen(bool show)

@@ -6295,6 +6295,7 @@ MonoBehaviour:
   jumpHeight: 2
   cameraTransform: {fileID: 7595384933793556155}
   mouseSensitivity: 100
+  player: {fileID: 8770090737198929311}
 --- !u!114 &1963345380342884955
 MonoBehaviour:
   m_ObjectHideFlags: 0
