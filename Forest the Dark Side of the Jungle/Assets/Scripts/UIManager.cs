@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject startMenu;
     [SerializeField]
+    public Slider healthSlider;
+    public static Action<int> OnHealthSliderUpdate;
+    [SerializeField]
     private GameObject gameUI;
     [SerializeField]
     private GameObject deadScreen;
@@ -52,6 +55,12 @@ public class UIManager : MonoBehaviour
 
         OnShowDeadScreen += ShowDeadScreen;
         OnShowWinScreen += ShowWinScreen;
+
+        OnHealthSliderUpdate += delegate (int value)
+        {
+            Debug.Log(value.ToString());
+            healthSlider.value = value;
+        };
 
         DontDestroyOnLoad(this);
     }

@@ -10,8 +10,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private GameObject player;
 
-    public Text healthText;
-
     void Start()
     {
         currentHealth = maxHealth;
@@ -33,10 +31,7 @@ public class PlayerHealth : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        if (healthText != null)
-        {
-            healthText.text = "Health: " + currentHealth;
-        }
+        UIManager.OnHealthSliderUpdate?.Invoke(currentHealth);
     }
 
     public void HideSkill()
