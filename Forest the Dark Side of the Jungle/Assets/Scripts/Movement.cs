@@ -84,6 +84,11 @@ public class Movement : MonoBehaviour
         sprintCooldown = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        //if (other.CompareTag("Heal")) 
+    }
+
     void CheckHightShowDeath()
     {
         float PlayerHight = player.transform.position.y;

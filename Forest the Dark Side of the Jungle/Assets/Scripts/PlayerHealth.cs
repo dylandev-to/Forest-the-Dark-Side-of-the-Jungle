@@ -43,4 +43,10 @@ public class PlayerHealth : MonoBehaviour
     {
         player.SetActive(false);
     }
+
+    public int Heal()
+    {
+        int healAmount = 5;
+        return healAmount;
+    }
 }

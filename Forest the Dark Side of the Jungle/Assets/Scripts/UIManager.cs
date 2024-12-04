@@ -147,7 +147,7 @@ public class UIManager : MonoBehaviour
     {
         if (ammodecrease == true)
         {
-            ammo -= 10;
+            ammo -= 1;
             ammoText.text = $"Ammo: {ammo.ToString().PadLeft(4, '0')}";
         }
         else if (ammodecrease == false && ammo < 100)
