@@ -36,7 +36,7 @@ public class PlayerShoot : MonoBehaviour
         IsStunned = curDelay < delay;
 
         curDelay += Time.deltaTime;
-        if (curDelay >= delay && Input.GetMouseButtonDown(0))
+        if (curDelay >= delay && Input.GetMouseButton(0))
         {
             audioFx.Stop();
 

@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour
         float PlayerHight = player.transform.position.y;
         if(PlayerHight < -6.5)
         {
-            UIManager.Instance.ShowDeadScreen(true);
+            UIManager.OnShowDeadScreen?.Invoke(true);
         }
     }
 

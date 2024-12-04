@@ -9,10 +9,10 @@ public class PlayerHandler : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Dead":
-                UIManager.Instance.ShowDeadScreen(true);
+                UIManager.OnShowDeadScreen?.Invoke(true);
                 break;
             case "Win":
-                UIManager.Instance.ShowWinScreen(true);
+                UIManager.OnShowWinScreen?.Invoke(true); ;
                 break;
             default:
                 break;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,14 +8,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
-
     [SerializeField]
     private GameObject startMenu;
     [SerializeField]
     private GameObject deadScreen;
+    public static Action<bool> OnShowDeadScreen;
     [SerializeField]
     private GameObject winScreen;
+    public static Action<bool> OnShowWinScreen;
     [SerializeField]
     private GameObject settingsScreen;
 
@@ -43,18 +44,12 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(this);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(this);
-
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         Coin.Collected += UpdateScore;
+
+        OnShowDeadScreen += ShowDeadScreen;
+        OnShowWinScreen += ShowWinScreen;
     }
 
     // Update is called once per frame
@@ -65,13 +60,8 @@ public class UIManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name.StartsWith("Background"))
+        if (!scene.name.StartsWith("Background"))
         {
-            startMenu.SetActive(true);
-        }
-        else
-        {
-            startMenu.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
