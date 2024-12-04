@@ -8557,6 +8557,10 @@ MonoBehaviour:
   settingsScreen: {fileID: 2691864037350807341}
   scoreText: {fileID: 7825377189363840801}
   goldText: {fileID: 2722968853363915794}
+  staminaText: {fileID: 7499969764941711272}
+  ammoText: {fileID: 3607631908314972304}
+  scaredText: {fileID: 7737844169332248940}
+  BatteryImage: {fileID: 1240294670108717119}
 --- !u!1 &6831027271418652591
 GameObject:
   m_ObjectHideFlags: 0
