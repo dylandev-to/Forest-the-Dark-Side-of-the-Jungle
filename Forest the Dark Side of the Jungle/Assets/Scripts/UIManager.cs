@@ -25,6 +25,21 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text goldText;
     private int gold;
+    [SerializeField]
+    private Text staminaText;
+    private int stamina;
+    private bool staminadecrease = false;
+    [SerializeField]
+    private Text ammoText;
+    private int ammo;
+    private bool ammodecrease = false;
+    [SerializeField]
+    private Text scaredText;
+    private int scaredLevel;
+    private bool scaredDecrease = false;
+    [SerializeField]
+    private Text BatteryImage;
+    private int flashlightBattery;
 
     void Awake()
     {
@@ -113,5 +128,47 @@ public class UIManager : MonoBehaviour
         gold++;
         goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
     }
-    
+
+    public void UpdateStamina()
+    {
+        if (staminadecrease == true)
+        {
+            stamina -= 2;
+            staminaText.text = $"Stamina: {stamina.ToString().PadLeft(4, '0')}";
+        }
+        else if (staminadecrease == false && stamina < 100)
+        {
+            stamina += 2;
+            staminaText.text = $"Stamina: {stamina.ToString().PadLeft(4, '0')}";
+        }
+    }
+
+    public void UpdateAmmo()
+    {
+        if (ammodecrease == true)
+        {
+            ammo -= 10;
+            ammoText.text = $"Ammo: {ammo.ToString().PadLeft(4, '0')}";
+        }
+        else if (ammodecrease == false && ammo < 100)
+        {
+            ammo += 5;
+            ammoText.text = $"Ammo: {ammo.ToString().PadLeft(4, '0')}";
+        }
+    }
+
+    public void UpdateScared()
+    {
+        if (scaredDecrease == true)
+        {
+            scaredLevel -= 5;
+            scaredText.text = $"Scared Level: {scaredLevel.ToString().PadLeft(4, '0')}";
+        }
+        else if (scaredDecrease == false && scaredLevel < 100)
+        {
+            scaredLevel += 5;
+            scaredText.text = $"Scared Level: {scaredLevel.ToString().PadLeft(4, '0')}";
+        }
+    }
+
 }

@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
+    private bool sprintCooldown = false; 
     [SerializeField] private GameObject player;
 
     void Start()
@@ -69,6 +70,18 @@ public class Movement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * currentSpeed * Time.deltaTime);
+
+        if (sprintCooldown == true)
+        {
+
+        }
+    }
+
+    IEnumerator SprintCooldown()
+    {
+        sprintCooldown = true;
+        yield return new WaitForSeconds(10);
+        sprintCooldown = false;
     }
 
     void CheckHightShowDeath()
