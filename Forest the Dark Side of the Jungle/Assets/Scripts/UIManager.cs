@@ -8,11 +8,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+
     [SerializeField]
     private GameObject startMenu;
-    [SerializeField]
-    public Slider healthSlider;
-    public static Action<int> OnHealthSliderUpdate;
     [SerializeField]
     private GameObject gameUI;
     [SerializeField]
@@ -26,29 +25,43 @@ public class UIManager : MonoBehaviour
 
     [Header("Texts")]
     [SerializeField]
-    private Text scoreText;
+    private TMP_Text scoreText;
     private int score;
     [SerializeField]
-    private Text goldText;
+    private TMP_Text goldText;
     private int gold;
     [SerializeField]
-    private Text staminaText;
+    public Slider staminaSlider;
+    public static Action<int> OnStaminaSliderUpdate;
     private int stamina;
     private bool staminadecrease = false;
     [SerializeField]
-    private Text ammoText;
+    private TMP_Text ammoText;
     private int ammo;
     private bool ammodecrease = false;
     [SerializeField]
-    private Text scaredText;
+    private TMP_Text scaredText;
     private int scaredLevel;
     private bool scaredDecrease = false;
     [SerializeField]
-    private Text BatteryImage;
+    private TMP_Text BatteryImage;
     private int flashlightBattery;
+    [SerializeField]
+    public Slider healthSlider;
+    public static Action<int> OnHealthSliderUpdate;
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject);
+
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         Coin.Collected += UpdateScore;
@@ -58,11 +71,13 @@ public class UIManager : MonoBehaviour
 
         OnHealthSliderUpdate += delegate (int value)
         {
-            Debug.Log(value.ToString());
             healthSlider.value = value;
         };
 
-        DontDestroyOnLoad(this);
+        OnStaminaSliderUpdate += delegate (int value)
+        {
+            staminaSlider.value = value;
+        };
     }
 
     // Update is called once per frame
@@ -135,25 +150,15 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScore()
     {
-        score += 3;
-        scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
-
-        gold++;
-        goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
-    }
-
-    public void UpdateStamina()
-    {
-        if (staminadecrease == true)
+        try
         {
-            stamina -= 2;
-            staminaText.text = $"Stamina: {stamina.ToString().PadLeft(4, '0')}";
+            score += 3;
+            scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
+
+            gold++;
+            goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
         }
-        else if (staminadecrease == false && stamina < 100)
-        {
-            stamina += 2;
-            staminaText.text = $"Stamina: {stamina.ToString().PadLeft(4, '0')}";
-        }
+        catch { }
     }
 
     public void UpdateAmmo()

@@ -19,7 +19,9 @@ public class Movement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
-    private bool sprintCooldown = false; 
+    private bool sprintCooldown = false;
+    private float _curCooldown = 100f;
+    private float _maxCooldown = 100f;
     [SerializeField] private GameObject player;
 
     void Start()
@@ -64,17 +66,30 @@ public class Movement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
 
-        float currentSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : movementSpeed;
+        float currentSpeed = IsSprinting() ? sprintSpeed : movementSpeed;
 
         if (PlayerShoot.IsStunned) currentSpeed /= 10;
 
         Vector3 move = transform.right * x + transform.forward * z;
         controller.Move(move * currentSpeed * Time.deltaTime);
+    }
 
-        if (sprintCooldown == true)
+    private bool IsSprinting()
+    {
+        UIManager.OnStaminaSliderUpdate?.Invoke((int) _curCooldown);
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-
+            _curCooldown = Mathf.Clamp(_curCooldown - (Time.deltaTime * 30), 0, _maxCooldown);
+            if (_curCooldown > 0)
+            {
+                return true;
+            }
         }
+        else
+        {
+            _curCooldown = Mathf.Clamp(_curCooldown + Time.deltaTime * 10, 0, _maxCooldown);
+        }
+        return false;
     }
 
     IEnumerator SprintCooldown()
