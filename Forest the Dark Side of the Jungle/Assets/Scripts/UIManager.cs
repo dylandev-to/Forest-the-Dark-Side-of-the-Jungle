@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject startMenu;
     [SerializeField]
+    private GameObject gameUI;
+    [SerializeField]
     private GameObject deadScreen;
     public static Action<bool> OnShowDeadScreen;
     [SerializeField]
@@ -50,6 +52,8 @@ public class UIManager : MonoBehaviour
 
         OnShowDeadScreen += ShowDeadScreen;
         OnShowWinScreen += ShowWinScreen;
+
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
@@ -63,7 +67,17 @@ public class UIManager : MonoBehaviour
         if (!scene.name.StartsWith("Background"))
         {
             Cursor.lockState = CursorLockMode.Locked;
+            startMenu.SetActive(false);
+            gameUI.SetActive(true);
         }
+        else
+        {
+            startMenu.SetActive(true);
+            gameUI.SetActive(false);
+        }
+
+        ShowDeadScreen(false);
+        ShowWinScreen(false);
     }
 
     public void GoLevel(string levelName)

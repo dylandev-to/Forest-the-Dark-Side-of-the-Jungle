@@ -12,7 +12,7 @@ public class PlayerHandler : MonoBehaviour
                 UIManager.OnShowDeadScreen?.Invoke(true);
                 break;
             case "Win":
-                UIManager.OnShowWinScreen?.Invoke(true); ;
+                UIManager.OnShowWinScreen?.Invoke(true);
                 break;
             default:
                 break;
