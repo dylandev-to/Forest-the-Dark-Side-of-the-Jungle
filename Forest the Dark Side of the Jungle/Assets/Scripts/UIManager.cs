@@ -35,10 +35,7 @@ public class UIManager : MonoBehaviour
     public static Action<int> OnStaminaSliderUpdate;
     private int stamina;
     private bool staminadecrease = false;
-    [SerializeField]
-    private TMP_Text ammoText;
-    private int ammo;
-    private bool ammodecrease = false;
+   
     [SerializeField]
     private TMP_Text scaredText;
     private int scaredLevel;
@@ -99,6 +96,7 @@ public class UIManager : MonoBehaviour
         try
         {
             scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
+            goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
         }
         catch { }
     }
@@ -194,32 +192,5 @@ public class UIManager : MonoBehaviour
         catch { }
     }
 
-    public void UpdateAmmo()
-    {
-        if (ammodecrease == true)
-        {
-            ammo -= 1;
-            ammoText.text = $"Ammo: {ammo.ToString().PadLeft(4, '0')}";
-        }
-        else if (ammodecrease == false && ammo < 100)
-        {
-            ammo += 5;
-            ammoText.text = $"Ammo: {ammo.ToString().PadLeft(4, '0')}";
-        }
-    }
-
-    public void UpdateScared()
-    {
-        if (scaredDecrease == true)
-        {
-            scaredLevel -= 5;
-            scaredText.text = $"Scared Level: {scaredLevel.ToString().PadLeft(4, '0')}";
-        }
-        else if (scaredDecrease == false && scaredLevel < 100)
-        {
-            scaredLevel += 5;
-            scaredText.text = $"Scared Level: {scaredLevel.ToString().PadLeft(4, '0')}";
-        }
-    }
 
 }
