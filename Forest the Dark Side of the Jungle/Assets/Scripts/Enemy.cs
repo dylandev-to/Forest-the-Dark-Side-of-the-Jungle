@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -41,14 +43,15 @@ public class Enemy : MonoBehaviour
     private float attackTimer = 0.0f;
     private bool hasDealtDamage = false;
 
-
     [Header("Health Damage")]
     [SerializeField]
     private int maxHealth;
     private int _curHealth;
     [SerializeField]
     private AudioSource damageAudioFx;
-    
+
+    public static Action OnHitEnemy;
+    public static Action OnEnemyKill;
 
     void Start()
     {
@@ -151,9 +154,6 @@ public class Enemy : MonoBehaviour
         agent.isStopped = false;
     }
 
-
-
-
     private void DealDamage()
     {
         PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
@@ -179,10 +179,12 @@ public class Enemy : MonoBehaviour
     {
         if (_curHealth <= 0)
         {
+            OnEnemyKill?.Invoke();
             Destroy(gameObject);
             return;
         }
 
+        OnHitEnemy?.Invoke();
         damageAudioFx.Stop();
         _curHealth -= dmg;
         damageAudioFx.Play();

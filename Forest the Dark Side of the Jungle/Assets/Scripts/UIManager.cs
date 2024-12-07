@@ -42,10 +42,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TMP_Text scaredText;
     private int scaredLevel;
+    [SerializeField]
+    private float scaredMultiplayer;
     private bool scaredDecrease = false;
     [SerializeField]
-    private TMP_Text BatteryImage;
-    private int flashlightBattery;
+    private Slider batterySlider;
+    public static Action<int> OnBatteryUpdate;
     [SerializeField]
     public Slider healthSlider;
     public static Action<int> OnHealthSliderUpdate;
@@ -78,12 +80,27 @@ public class UIManager : MonoBehaviour
         {
             staminaSlider.value = value;
         };
+
+        OnBatteryUpdate += delegate (int value)
+        {
+            batterySlider.value = value;
+        };
+
+        Enemy.OnEnemyKill += () => score += 10;
+        Enemy.OnHitEnemy += () => score += 3;
     }
 
     // Update is called once per frame
     void Update()
     {
         StopDeadScreen();
+        UpdateScaredLevel();
+
+        try
+        {
+            scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
+        }
+        catch { }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -102,6 +119,25 @@ public class UIManager : MonoBehaviour
 
         ShowDeadScreen(false);
         ShowWinScreen(false);
+
+        scaredLevel = 0;
+    }
+
+    private float _cooldownScared;
+    private void UpdateScaredLevel()
+    {
+        _cooldownScared += Time.deltaTime * scaredMultiplayer;
+        if (_cooldownScared > 1)
+        {
+            scaredLevel++;
+            _cooldownScared = 0;
+
+            try
+            {
+                scaredText.text = $"Scared Level: {scaredLevel.ToString().PadLeft(4, '0')}";
+            }
+            catch { }
+        }
     }
 
     public void GoLevel(string levelName)
@@ -153,10 +189,7 @@ public class UIManager : MonoBehaviour
         try
         {
             score += 3;
-            scoreText.text = $"Score: {score.ToString().PadLeft(4, '0')}";
-
             gold++;
-            goldText.text = $"Gold: {gold.ToString().PadLeft(4, '0')}";
         }
         catch { }
     }

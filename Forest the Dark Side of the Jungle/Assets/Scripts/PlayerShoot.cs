@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,16 @@ public class PlayerShoot : MonoBehaviour
     [Header("Flashlight")]
     [SerializeField]
     private GameObject flashlightObject;
+    [SerializeField]
+    private float batteryUseMultiplier;
+    private float __curFlashlight = 100;
+
+    private float curFlashlightValue 
+    {  
+        get { return Math.Clamp(__curFlashlight, 0, 100); } 
+        set { __curFlashlight = Math.Clamp(value, 0, 100); } 
+    } 
+
     [SerializeField]
     private bool isFlashlightOn;
 
@@ -51,11 +62,40 @@ public class PlayerShoot : MonoBehaviour
             curDelay = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        UpdateFlashLight();
+    }
+
+    private void UpdateFlashLight()
+    {
+        UIManager.OnBatteryUpdate?.Invoke((int) curFlashlightValue);
+
+        if (curFlashlightValue <= 0 && isFlashlightOn)
         {
-            isFlashlightOn = !isFlashlightOn;
-            flashlightObject.SetActive(isFlashlightOn);
+            TurnFlashLight(false);
+            return;
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                TurnFlashLight(!isFlashlightOn);
+            }
+        }
+
+        if (isFlashlightOn)
+        {
+            curFlashlightValue -= Time.deltaTime * batteryUseMultiplier;
+        }
+        else
+        {
+            curFlashlightValue += Time.deltaTime * 20;
+        }
+    }
+
+    private void TurnFlashLight(bool state)
+    {
+        isFlashlightOn = state;
+        flashlightObject.SetActive(state);
     }
 
     private void ImpulseBullet(GameObject bulletGo)
