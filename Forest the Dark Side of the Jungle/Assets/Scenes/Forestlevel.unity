@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18827617, g: 0.19113809, b: 0.19109794, a: 1}
+  m_IndirectSpecularColor: {r: 0.1882762, g: 0.19113821, b: 0.19109797, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -351,10 +351,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2671702086664576437, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4358462454093984669, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -451,18 +447,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5996254773441509444, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: scaredMultiplayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267609566547071661, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267609566547071661, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.6
-      objectReference: {fileID: 0}
     - target: {fileID: 6493500925482469504, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
       propertyPath: m_Name
       value: UiManager
@@ -472,18 +456,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7267350885121675840, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974585678638181730, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9108527097691277413, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9108527097691277413, guid: b1c9b75c098baed408c1a47079a179cf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
